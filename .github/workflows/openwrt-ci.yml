@@ -68,7 +68,7 @@ jobs:
           # 例如:
           # 编译841固件:
           cat >> .config <<EOF
-          ONFIG_TARGET_ath79=y
+          CONFIG_TARGET_ath79=y
           CONFIG_TARGET_ath79_tiny=y
           CONFIG_TARGET_ath79_tiny_DEVICE_tplink_tl-wr841-v8=y
           EOF
