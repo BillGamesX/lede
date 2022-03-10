@@ -7,10 +7,10 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: OpenWrt-CI
+name: 编译841
 
 on:
-  #push:
+  push:
     branches: 
       - master
   # schedule:
@@ -66,11 +66,26 @@ jobs:
           #
           # 在 cat >> .config <<EOF 到 EOF 之间粘贴你的编译配置, 需注意缩进关系
           # 例如:
+          # 编译841固件:
           cat >> .config <<EOF
-          CONFIG_TARGET_IMAGES_GZIP=y
-          CONFIG_KERNEL_BUILD_USER="OpenWrt-CI"
-          CONFIG_KERNEL_BUILD_DOMAIN="Azure"
+          ONFIG_TARGET_ath79=y
+          CONFIG_TARGET_ath79_tiny=y
+          CONFIG_TARGET_ath79_tiny_DEVICE_tplink_tl-wr841-v8=y
           EOF
+          
+          
+          # 常用LuCI插件选择:
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_luci-app-adbyby-plus=y
+          CONFIG_PACKAGE_luci-app-zerotier=y
+          EOF
+          
+          # LuCI主题:
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_luci-theme-argon=y
+          EOF
+          
+          
           #
           # ===============================================================
           # 
