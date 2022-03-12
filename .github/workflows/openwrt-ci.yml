@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: 编译841-2
+name: 编译842
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
 
   build_openwrt:
 
-    name: Build OpenWrt firmware
+    name: 云编译842
 
     runs-on: ubuntu-latest
 
@@ -66,11 +66,11 @@ jobs:
           #
           # 在 cat >> .config <<EOF 到 EOF 之间粘贴你的编译配置, 需注意缩进关系
           # 例如:
-          # 编译841固件:
+          # 编译842固件:
           cat >> .config <<EOF
           CONFIG_TARGET_ath79=y
-          CONFIG_TARGET_ath79_tiny=y
-          CONFIG_TARGET_ath79_tiny_DEVICE_tplink_tl-wr841-v8=y
+          CONFIG_TARGET_ath79_generic=y
+          CONFIG_TARGET_ath79_generic_DEVICE_tplink_tl-wr842n-v2=y
           EOF
           
           
