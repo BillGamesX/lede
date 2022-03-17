@@ -73,13 +73,7 @@ jobs:
           CONFIG_TARGET_ath79_generic_DEVICE_tplink_tl-wr842n-v2=y
           EOF
           
-          
-          # 常用LuCI插件选择:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-app-adbyby-plus=y
-          EOF
-          
-               
+     
           #
           # ===============================================================
           # 
