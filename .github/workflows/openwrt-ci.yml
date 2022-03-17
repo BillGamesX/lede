@@ -10,7 +10,7 @@
 name: 编译842添加插件
 
 on:
-   push:
+  push:
     branches: 
       - master
   # schedule:
