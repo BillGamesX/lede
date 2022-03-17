@@ -10,7 +10,7 @@
 name: 编译842
 
 on:
-  push:
+   #push:
     branches: 
       - master
   # schedule:
@@ -55,6 +55,21 @@ jobs:
           # ln -s /mnt/openwrt/feeds ./feeds
           # ln -s /mnt/openwrt/staging_dir ./staging_dir
           df -h
+          
+      - name: 同步最新的源码
+        run: |
+          git remote add openwrt https://github.com/coolsnowwolf/lede.git
+          git pull openwrt master
+          git remote -v  
+          
+      - name: 自定义插件主题。
+        run: |
+          cd package
+          mkdir openwrt-packages
+          cd openwrt-packages 
+          git clone https://github.com/kenzok8/openwrt-packages.git
+          
+          
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
@@ -73,6 +88,20 @@ jobs:
           CONFIG_TARGET_ath79_generic_DEVICE_tplink_tl-wr842n-v2=y
           EOF
           
+          # LuCI插件选择:
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_luci-app-passwall2=y
+          CONFIG_PACKAGE_luci-app-ssr-plus=y
+          CONFIG_PACKAGE_luci-app-adbyby-plus=y
+          CONFIG_PACKAGE_luci-app-aria2=y
+          CONFIG_PACKAGE_luci-app-adblock=y
+          EOF
+          
+          # LuCI主题:
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_luci-theme-argon=y
+          CONFIG_PACKAGE_luci-theme-netgear=y
+          EOF
      
           #
           # ===============================================================
