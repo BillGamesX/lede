@@ -7,10 +7,10 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: 编译842
+name: 编译842添加插件
 
 on:
-   #push:
+   push:
     branches: 
       - master
   # schedule:
@@ -22,7 +22,7 @@ jobs:
 
   build_openwrt:
 
-    name: 云编译842
+    name: 云编译842添加插件
 
     runs-on: ubuntu-latest
 
