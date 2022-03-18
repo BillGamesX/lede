@@ -61,7 +61,6 @@ jobs:
           
       - name: 自定义插件主题。
         run: |
-          cd lede
           rm -rf ./feeds
           cd package
           mkdir openwrt-packages
